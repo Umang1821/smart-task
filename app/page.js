@@ -97,13 +97,6 @@ export default function Home() {
 
       <h1 className="text-4xl p-4 text-center text-black">Smart Task Manager</h1>
       <TaskSummary taskCounts={taskCounts} />
-      <TaskList
-        items={items}
-        toggleComplete={toggleComplete}
-        editItem={setEditingItem}
-        deleteItem={deleteItem}
-        className="w-full max-w-2xl"
-      />
       <TaskForm
         newItem={newItem}
         setNewItem={setNewItem}
@@ -112,6 +105,14 @@ export default function Home() {
         editingItem={editingItem}
         className="w-full max-w-2xl"
       />
+      <TaskList
+        items={items}
+        toggleComplete={toggleComplete}
+        editItem={setEditingItem}
+        deleteItem={deleteItem}
+        className="w-full max-w-2xl"
+      />
+     
     </main>
   );
 }
