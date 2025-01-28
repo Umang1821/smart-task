@@ -1,36 +1,25 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js Firebase Project
 
-## Getting Started
+This is a Next.js application integrated with Firebase. It utilizes Firebase for various backend services such as authentication, Firestore for the database. The project serves as a full-stack solution for building modern web applications with a server-side rendering framework and a scalable, real-time backend.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Firebase Authentication**: Secure user authentication with Google sign-in.
+- **Firestore**: Real-time database integration to store and manage data.
+- **Netlify Hosting**: Fast and secure deployment with automatic scaling.
+- **Server-Side Rendering (SSR)**: Next.js leverages SSR for fast page loads and SEO optimization.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technologies Used
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- **Next.js**: React framework for building static and dynamic websites.
+- **Firebase**: Backend services including authentication, Firestore database, and hosting.
+- **Tailwind CSS**: Utility-first CSS framework for custom styling.
+- **React**: Library for building user interfaces.
+- **Netlify**: For deployment.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Hosted Link
+https://cool-raindrop-a531f9.netlify.app/  
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
