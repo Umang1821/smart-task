@@ -36,7 +36,7 @@ export default function TaskForm({
           />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <select
             value={newItem.priority}
             onChange={(e) =>
@@ -58,7 +58,32 @@ export default function TaskForm({
             className="p-3 border border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             type="date"
           />
+        </div> */}
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <select
+            value={newItem.priority}
+            onChange={(e) =>
+              setNewItem({ ...newItem, priority: e.target.value })
+            }
+            className="p-4 text-lg border border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="">Select Priority</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+          <input
+            value={newItem.dueDate}
+            onChange={(e) =>
+              setNewItem({ ...newItem, dueDate: e.target.value })
+            }
+            onClick={(e) => e.target.showPicker()}
+            className="p-4 text-lg border border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            type="date"
+          />
         </div>
+
 
         <button
           className="w-full text-white bg-blue-600 hover:bg-blue-700 p-3 rounded-lg text-xl font-semibold shadow-md transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500"

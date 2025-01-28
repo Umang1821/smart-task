@@ -18,7 +18,7 @@ export default function TaskList({ items, toggleComplete, editItem, deleteItem }
   return (
     <Grid container spacing={2} className="mt-6">
       <Grid item xs={12}>
-        <Typography variant="h6" align="center" gutterBottom fontFamily={'monospace'} fontSize={22} fontWeight={'bold'} fontStyle={"white"}>
+        <Typography variant="h6" align="center" gutterBottom fontFamily={'monospace'} fontSize={22} fontWeight={'bold'} color='white'>
           Active Tasks
         </Typography>
         <TaskTable
@@ -30,7 +30,7 @@ export default function TaskList({ items, toggleComplete, editItem, deleteItem }
       </Grid>
 
       <Grid item xs={12}>
-        <Typography variant="h6" align="center" gutterBottom fontFamily={'monospace'} fontSize={22} fontWeight={'bold'} fontStyle={"white"}>
+        <Typography variant="h6" align="center" gutterBottom fontFamily={'monospace'} fontSize={22} fontWeight={'bold'} color='white'>
           Completed Tasks
         </Typography>
         <TaskTable
