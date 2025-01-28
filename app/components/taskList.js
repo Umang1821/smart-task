@@ -6,23 +6,27 @@ export default function TaskList({ items, toggleComplete, editItem, deleteItem }
   return (
     <div>
       <div className="mt-6">
-        <h2 className="text-xl text-center">Active Tasks</h2>
-        <ul className="border border-white p-4 rounded-lg">
-          {items.filter((item) => !item.completed).map((item) => (
-            <TaskItem
-              key={item.id}
-              item={item}
-              toggleComplete={toggleComplete}
-              editItem={editItem}
-              deleteItem={deleteItem}
-            />
-          ))}
+        <h2 className="text-xl text-black text-center">Active Tasks</h2>
+        <ul className="border border-black p-4 rounded-lg">
+          {items.filter((item) => !item.completed).length === 0 ? (
+            <li className="text-center text-gray-500">No tasks</li>
+          ) : (
+            items.filter((item) => !item.completed).map((item) => (
+              <TaskItem
+                key={item.id}
+                item={item}
+                toggleComplete={toggleComplete}
+                editItem={editItem}
+                deleteItem={deleteItem}
+              />
+            ))
+          )}
         </ul>
       </div>
 
-      <div className="mt-6">
-        <h2 className="text-xl text-center">Completed Tasks</h2>
-        <ul className="border border-white p-4 rounded-lg">
+      <div className="mt-6 mb-4">
+        <h2 className="text-xl text-black text-center">Completed Tasks</h2>
+        <ul className="border border-black p-4 rounded-lg">
           {items.filter((item) => item.completed).map((item) => (
             <TaskItem
               key={item.id}

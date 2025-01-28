@@ -91,27 +91,25 @@ export default function Home() {
   }, [user]);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between sm:p-24 p-4 ">
+    <main className="flex min-h-screen flex-col items-center bg-white justify-between sm:p-24 p-4 ">
       <button className="absolute top-4 right-4 bg-blue-600 text-white py-2 px-4 rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50"
-    onClick={logOut}>Sign out</button>
+        onClick={logOut}>Sign out</button>
 
-      <h1 className="text-4xl p-4 text-center">Smart Task Manager</h1>
+      <h1 className="text-4xl p-4 text-center text-black">Smart Task Manager</h1>
       <TaskSummary taskCounts={taskCounts} />
-
+      <TaskList
+        items={items}
+        toggleComplete={toggleComplete}
+        editItem={setEditingItem}
+        deleteItem={deleteItem}
+        className="w-full max-w-2xl"
+      />
       <TaskForm
         newItem={newItem}
         setNewItem={setNewItem}
         addItem={addItem}
         updateItem={updateItem}
         editingItem={editingItem}
-        className="w-full max-w-2xl"
-      />
-
-      <TaskList
-        items={items}
-        toggleComplete={toggleComplete}
-        editItem={setEditingItem}
-        deleteItem={deleteItem}
         className="w-full max-w-2xl"
       />
     </main>

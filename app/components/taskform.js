@@ -21,16 +21,20 @@ export default function TaskForm({ newItem, setNewItem, addItem, updateItem, edi
           type="text"
           placeholder="Enter Description"
         />
-        <input
+        <select
           value={newItem.priority}
           onChange={(e) => setNewItem({ ...newItem, priority: e.target.value })}
           className="w-full p-3 border mt-3"
-          type="text"
-          placeholder="Enter Priority"
-        />
+        >
+          <option value="">Select</option>
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
         <input
           value={newItem.dueDate}
           onChange={(e) => setNewItem({ ...newItem, dueDate: e.target.value })}
+          onClick={(e) => e.target.showPicker()}
           className="w-full p-3 border mt-3"
           type="date"
         />
