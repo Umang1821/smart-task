@@ -13,7 +13,7 @@ export default function TaskSummary({ taskCounts }) {
 
   return (
     <Box className="task-summary-container w-full" sx={{ padding: 2, textAlign: "center" }}>
-      <Typography variant="h6" sx={{ marginBottom: 3 , fontFamily: "monospace", fontSize: "22px", fontWeight:"bold"}}>
+      <Typography variant="h6" sx={{ marginBottom: 3 , fontFamily: "monospace", fontSize: "22px", fontWeight:"bold", color:"white"}}>
         Task Summary
       </Typography>
 
@@ -52,7 +52,7 @@ export default function TaskSummary({ taskCounts }) {
                 borderRadius: "50%",
               }}
             />
-            <Typography variant="body2">{item.label}</Typography>
+            <Typography variant="body2" sx={{ color: "white"}}>{item.label}</Typography>
           </Box>
         ))}
       </Box>
