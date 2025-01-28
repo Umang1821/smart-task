@@ -1,33 +1,48 @@
-import React from 'react';
+import React from "react";
 
-export default function TaskForm({ newItem, setNewItem, addItem, updateItem, editingItem }) {
+export default function TaskForm({
+  newItem,
+  setNewItem,
+  addItem,
+  updateItem,
+  editingItem,
+}) {
   return (
-    <div className="w-[50%] bg-slate-800 p-4 rounded-lg  ">
+    <div className="w-full text-black   bg-gradient-to-r from-slate-700 to-slate-800 p-6 rounded-2xl shadow-lg">
       <form
         onSubmit={editingItem ? updateItem : addItem}
-        className="items-center text-black flex flex-col justify-center gap-2 w-full"
+        className="flex flex-col gap-6"
       >
-        <div className=" md:grid-cols-2 gap-4 w-full flex">
+        <h2 className="text-[22px] font-semibold font-mono text-center text-white mb-4">
+          {editingItem ? "Edit Task" : "Add New Task"}
+        </h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <input
             value={newItem.name}
             onChange={(e) => setNewItem({ ...newItem, name: e.target.value })}
-            className="w-11/12 md:w-9/12 p-3 border mb-2 h-full"
+            className="p-3 border border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             type="text"
             placeholder="Enter Title"
           />
           <input
             value={newItem.description}
-            onChange={(e) => setNewItem({ ...newItem, description: e.target.value })}
-            className="w-11/12 md:w-9/12 p-3 border h-full"
+            onChange={(e) =>
+              setNewItem({ ...newItem, description: e.target.value })
+            }
+            className="p-3 border border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             type="text"
             placeholder="Enter Description"
           />
         </div>
-        <div className=" md:grid-cols-2 gap-4 w-full flex">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <select
             value={newItem.priority}
-            onChange={(e) => setNewItem({ ...newItem, priority: e.target.value })}
-            className="w-11/12 md:w-9/12 p-3 border h-full"
+            onChange={(e) =>
+              setNewItem({ ...newItem, priority: e.target.value })
+            }
+            className="p-3 border border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option value="">Select Priority</option>
             <option value="low">Low</option>
@@ -36,14 +51,20 @@ export default function TaskForm({ newItem, setNewItem, addItem, updateItem, edi
           </select>
           <input
             value={newItem.dueDate}
-            onChange={(e) => setNewItem({ ...newItem, dueDate: e.target.value })}
+            onChange={(e) =>
+              setNewItem({ ...newItem, dueDate: e.target.value })
+            }
             onClick={(e) => e.target.showPicker()}
-            className="w-11/12 md:w-9/12 p-3 border h-full"
+            className="p-3 border border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             type="date"
           />
         </div>
-        <button className="text-white bg-slate-950 hover:bg-slate-900 p-3 text-xl  mt-3 rounded-md" type="submit">
-          {editingItem ? 'Update' : 'Add'}
+
+        <button
+          className="w-full text-white bg-blue-600 hover:bg-blue-700 p-3 rounded-lg text-xl font-semibold shadow-md transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          type="submit"
+        >
+          {editingItem ? "Update Task" : "Add Task"}
         </button>
       </form>
     </div>

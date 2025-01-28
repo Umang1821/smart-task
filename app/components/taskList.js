@@ -1,69 +1,110 @@
 import React from 'react';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import {
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+  TableContainer,
+  Paper,
+  Button,
+  Grid,
+  Typography,
+} from '@mui/material';
 
 export default function TaskList({ items, toggleComplete, editItem, deleteItem }) {
   return (
-    <div>
-      <div className="mt-6">
-        <h2 className="text-xl text-black text-center">Active Tasks</h2>
-        <ul className="border border-black p-4 rounded-lg max-h-60 overflow-y-auto">
-          {items.filter((item) => !item.completed).length === 0 ? (
-            <li className="text-center text-gray-500">No tasks</li>
-          ) : (
-            items.filter((item) => !item.completed).map((item) => (
-              <TaskItem
-                key={item.id}
-                item={item}
-                toggleComplete={toggleComplete}
-                editItem={editItem}
-                deleteItem={deleteItem}
-              />
-            ))
-          )}
-        </ul>
-      </div>
+    <Grid container spacing={2} className="mt-6">
+      <Grid item xs={12}>
+        <Typography variant="h6" align="center" gutterBottom fontFamily={'monospace'} fontSize={22} fontWeight={'bold'}>
+          Active Tasks
+        </Typography>
+        <TaskTable
+          items={items.filter((item) => !item.completed)}
+          toggleComplete={toggleComplete}
+          editItem={editItem}
+          deleteItem={deleteItem}
+        />
+      </Grid>
 
-      <div className="mt-6 mb-4">
-        <h2 className="text-xl text-black text-center">Completed Tasks</h2>
-        <ul className="border border-black p-4 rounded-lg max-h-60 overflow-y-auto">
-          {items.filter((item) => item.completed).map((item) => (
-            <TaskItem
-              key={item.id}
-              item={item}
-              toggleComplete={toggleComplete}
-              editItem={editItem}
-              deleteItem={deleteItem}
-            />
-          ))}
-        </ul>
-      </div>
-    </div>
+      <Grid item xs={12}>
+        <Typography variant="h6" align="center" gutterBottom fontFamily={'monospace'} fontSize={22} fontWeight={'bold'}>
+          Completed Tasks
+        </Typography>
+        <TaskTable
+          items={items.filter((item) => item.completed)}
+          toggleComplete={toggleComplete}
+          editItem={editItem}
+          deleteItem={deleteItem}
+        />
+      </Grid>
+    </Grid>
   );
 }
 
-function TaskItem({ item, toggleComplete, editItem, deleteItem }) {
+function TaskTable({ items, toggleComplete, editItem, deleteItem }) {
   return (
-    <li className={`my-4 w-full flex justify-between ${item.completed ? 'bg-green-500' : 'bg-slate-500'} border border-white rounded-lg`}>
-      <div className="p-4 w-full flex justify-between">
-        <span className="capitalize">{item.name}</span>
-      </div>
-      <div className="p-4 w-full">
-        <span className="text-sm">{item.description}</span>
-      </div>
-      <div className="p-4 w-full">
-        <span className="text-sm">{item.priority}</span>
-      </div>
-      <div className="p-4 w-full">
-        <span className="text-sm">{item.dueDate}</span>
-      </div>
-      <div className="flex space-x-4 items-center mr-3">
-        <button onClick={() => toggleComplete(item)} className={item.completed ? 'text-black' : 'text-green-500'}>
-          {item.completed ? 'Pending' : 'Done'}
-        </button>
-        <EditIcon onClick={() => editItem(item)} />
-        <DeleteIcon onClick={() => deleteItem(item.id)} />
-      </div>
-    </li>
+    <TableContainer
+      component={Paper}
+      sx={{
+        maxHeight: '300px', 
+        overflowY: 'auto',  
+        borderRadius: 2,
+      }}
+    >
+      <Table stickyHeader>
+        <TableHead>
+          <TableRow>
+            <TableCell sx={{ fontSize: '14px' }}>Name</TableCell>
+            <TableCell sx={{ fontSize: '14px' }}>Description</TableCell>
+            <TableCell sx={{ fontSize: '14px' }}>Priority</TableCell>
+            <TableCell sx={{ fontSize: '14px' }}>Due Date</TableCell>
+            <TableCell sx={{ fontSize: '14px' }}>Actions</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {items.length === 0 ? (
+            <TableRow>
+              <TableCell colSpan={5} align="center">
+                Add tasks
+              </TableCell>
+            </TableRow>
+          ) : (
+            items.map((item) => (
+              <TableRow
+                key={item.id}
+                sx={{
+                  backgroundColor: item.completed ? 'lightgreen' : 'white',
+                }}
+              >
+                <TableCell sx={{ fontSize: '14px' }}>{item.name}</TableCell>
+                <TableCell sx={{ fontSize: '14px' }}>{item.description}</TableCell>
+                <TableCell sx={{ fontSize: '14px' }}>{item.priority}</TableCell>
+                <TableCell sx={{ fontSize: '14px' }}>{item.dueDate}</TableCell>
+                <TableCell>
+                  <Button
+                    onClick={() => toggleComplete(item)}
+                    variant="contained"
+                    color={item.completed ? 'warning' : 'success'}
+                  >
+                    {item.completed ? 'Pending' : 'Done'}
+                  </Button>
+                  <EditIcon
+                    onClick={() => editItem(item)}
+                    style={{ cursor: 'pointer', marginLeft: '8px' }}
+                  />
+                  <DeleteIcon
+                    onClick={() => deleteItem(item.id)}
+                    style={{ cursor: 'pointer', marginLeft: '8px', color: 'red' }}
+                  />
+                </TableCell>
+              </TableRow>
+            ))
+          )}
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 }

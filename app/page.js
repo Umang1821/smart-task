@@ -7,6 +7,7 @@ import TaskList from './components/taskList';
 import TaskSummary from './components/taskSummary';
 import Login from './components/login';
 import { useAuth } from './context/AuthContext';
+import SmartToyIcon from '@mui/icons-material/SmartToy';
 
 export default function Home() {
   const { user, logOut } = useAuth();
@@ -91,28 +92,36 @@ export default function Home() {
   }, [user]);
 
   return (
-    <main className="flex min-h-screen flex-col items-center bg-white justify-between sm:p-24 p-4 ">
-      <button className="absolute top-4 right-4 bg-blue-600 text-white py-2 px-4 rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50"
-        onClick={logOut}>Sign out</button>
+    <>
+      <header className="flex justify-between items-center p-4 bg-blue-600 text-white">
+        <h1 className="text-4xl font-mono">Smart Task Manager <SmartToyIcon sx={{ fontSize: 40 }} /> </h1>
+        <button className="bg-blue-800 py-2 px-4 rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50" onClick={logOut}>Sign out</button>
+      </header>
 
-      <h1 className="text-4xl p-4 text-center text-black">Smart Task Manager</h1>
-      <TaskSummary taskCounts={taskCounts} />
-      <TaskForm
-        newItem={newItem}
-        setNewItem={setNewItem}
-        addItem={addItem}
-        updateItem={updateItem}
-        editingItem={editingItem}
-        className="w-full max-w-2xl"
-      />
-      <TaskList
-        items={items}
-        toggleComplete={toggleComplete}
-        editItem={setEditingItem}
-        deleteItem={deleteItem}
-        className="w-full max-w-2xl"
-      />
-     
-    </main>
+      <main className="flex flex-col sm:flex-row p-2 sm:p-10 justify-between">
+        <div className="flex flex-col items-start space-y-4 w-full sm:w-1/2">
+          <TaskForm
+            newItem={newItem}
+            setNewItem={setNewItem}
+            addItem={addItem}
+            updateItem={updateItem}
+            editingItem={editingItem}
+            className="w-full max-w-2xl"
+          />
+          <TaskSummary taskCounts={taskCounts} />
+
+        </div>
+
+        <div className="flex-grow sm:ml-8 w-full sm:w-1/2">
+          <TaskList
+            items={items}
+            toggleComplete={toggleComplete}
+            editItem={setEditingItem}
+            deleteItem={deleteItem}
+            className="w-full max-w-2xl"
+          />
+        </div>
+      </main>
+    </>
   );
 }

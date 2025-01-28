@@ -6,9 +6,9 @@ export default function Login() {
     const { signIn } = useAuth();
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-black via-gray-500 to-white">
-            <div className="bg-white p-8 rounded-lg shadow-lg max-w-sm w-full">
-                <h1 className="text-2xl font-semibold text-center mb-6 text-gray-800">
+        <div className="flex justify-center items-center min-h-screen">
+            <div className="bg-white p-12 rounded-lg shadow-lg max-w-md w-full">
+                <h1 className="text-2xl font-semibold font-mono text-center mb-6 text-gray-800">
                     Hi! there
                 </h1>
                 <button
@@ -17,8 +17,8 @@ export default function Login() {
                 >
                     Sign in with Google
                 </button>
-                
             </div>
         </div>
+
     );
 }
