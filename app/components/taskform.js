@@ -29,7 +29,7 @@ export default function TaskForm({ newItem, setNewItem, addItem, updateItem, edi
             onChange={(e) => setNewItem({ ...newItem, priority: e.target.value })}
             className="w-11/12 md:w-9/12 p-3 border h-full"
           >
-            <option value="">Select</option>
+            <option value="">Select Priority</option>
             <option value="low">Low</option>
             <option value="medium">Medium</option>
             <option value="high">High</option>
