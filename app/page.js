@@ -22,7 +22,7 @@ export default function Home() {
 
   const addItem = async (e) => {
     e.preventDefault();
-    if (newItem.name !== '') {
+    if (newItem.name !== '' && newItem.description !== '' && newItem.priority !== '' && newItem.dueDate !== '') {
       await addDoc(collection(db, 'items'), {
         ...newItem,
         completed: false,
@@ -34,7 +34,7 @@ export default function Home() {
 
   const updateItem = async (e) => {
     e.preventDefault();
-    if (newItem.name !== '') {
+    if (newItem.name !== '' && newItem.description !== '' && newItem.priority !== '' && newItem.dueDate !== '') {
       await updateDoc(doc(db, 'items', editingItem.id), { ...newItem });
       setNewItem({ name: '', description: '', priority: '', dueDate: '' });
       setEditingItem(null);
